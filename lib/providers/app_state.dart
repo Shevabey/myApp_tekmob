@@ -9,7 +9,7 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  var favorites = [];
+  var favorites = <WordPair>[];
 
   void toggleFavorite() {
     if (favorites.contains(current)) {
@@ -17,6 +17,16 @@ class AppState extends ChangeNotifier {
     } else {
       favorites.add(current);
     }
+    notifyListeners();
+  }
+
+  void removeFromFavorites(WordPair pair) {
+    favorites.remove(pair);
+    notifyListeners();
+  }
+
+  void addToFavorites(WordPair pair) {
+    favorites.add(pair);
     notifyListeners();
   }
 }
